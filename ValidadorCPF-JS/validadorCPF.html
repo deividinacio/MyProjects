@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValidaCPF</title>
+</head>
+        <style>
+            .container{
+                display: flex;
+                justify-content: center;
+                height: 85vh;
+                align-items: center;
+            }
+            h1{
+                text-align: center;
+            }
+            input[type='text']{
+                height: 50px;
+                font-size: 30px;
+                text-align: center;
+            }
+            input[type='submit']
+            {
+                margin-left: 10px;
+                font-size: 20px;
+            }
+            fieldset{
+                display: flex;
+                align-items: center;
+            }
+            p{
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            @media screen and (max-width:300px){
+                input[type='text']{
+                height: 17px;
+                font-size: 9px;
+                text-align: center;
+                }
+                input[type='submit']
+                {
+                margin-left: 5px;
+                font-size: 11px;
+                }
+
+            }
+           
+        </style>
+        <body>
+            <h1>Validador de CPF</h1>
+            <div class="container">
+                <div class="validaCpf">
+                    <form  >
+                        <fieldset>
+                            <legend> Informe seu CPF </legend>
+                            <input type="text" maxlength="11"  >
+                            <input type="submit" value="Verificar" onclick="validaCPF(document.getElementsByTagName('input')[0].value) ">
+                        </fieldset>
+                    </form>
+                            <p></p> <!-- para mostrar o CPF verdadeiro ou falso -->
+                            <p></p> <!-- para mostrar a mensagem do dig verificador --> 
+                </div>
+            </div>
+            <script>
+                // Identificando o primeiro digito verificador
+
+                var varCpf, vetCpf = [], digitoVer1 = 0, digitoVer2 = 0, posicao, varMultiplicadora = 10, vetResultMultipl = [], somaTotal = 0, resto, flgDig1, flgDig2 
+                /*
+                function limpaCPF(varCpf) {
+                        varCpf.replace('.', '') // troca ponto por nada
+                        varCpf.replace('-','') // troca traço por nada
+                        varCpf.replace(' ','') // troca espaço por nada
+                        alert( 'CPF FORMATADO ' + varCpf)
+                        return varCpf
+                    }
+                    */
+                
+                function validaCPF(varCpf) {
+                
+        
+                    //Limpando as maskaras do CPF
+                    varCpf = varCpf.replaceAll('.', "")  // troca todos pontos por nada
+                    varCpf = varCpf.replace('-', "") // troca traço por nada
+                    //Validando entrada do CPF
+                    if ((varCpf === '00000000000')||
+                    (varCpf === '11111111111')|| 
+                    (varCpf === '22222222222')|| 
+                    (varCpf === '33333333333')|| 
+                    (varCpf === '44444444444')|| 
+                    (varCpf === '55555555555')|| 
+                    (varCpf === '66666666666')||
+                    (varCpf === '77777777777')|| 
+                    (varCpf === '88888888888')|| 
+                    (varCpf === '99999999999'))
+                    {
+                        return  alert('NÚMERO DE CPF INVÁLIDO!')
+                        //window.sessionStorage.setItem("msg", "NÚMERO INVÁLIDO")
+                        // Criamos a sessão para mostrar a mensagem
+                    }
+                   
+                    if (varCpf == "")
+                    {
+                        return alert('O campo CPF não pode estar vázio!')
+                    }
+                    // Verifica a quantidade de números digitados
+                    if (varCpf < 11)
+                    {
+                        return alert('CPF inválido') 
+                    }
+               
+                    //for (posicao = 0; posicao <= 10; posicao ++ )
+                   // {
+                        vetCpf = varCpf.split(''); // quebra a variavel e coloca cada elemento em uma posição do vetor (se colocarmos algum número via parâmetro, ele vai retirar esse número e substitui-lo por vírgula )
+                    //}
+                    for(posicao = 0; posicao <= 8; posicao ++ ) // vamos pegar somente as 9 primeiras posições, então o contador deve ir de 0 a 8
+                    {
+                        vetResultMultipl[posicao] = vetCpf[posicao] * varMultiplicadora
+                        varMultiplicadora -- 
+
+                        if(varMultiplicadora == 1)
+                        {
+                            posicao = 8
+                            // forço o contador receber 8 para sair do laço de repetição
+                        }
+                        somaTotal += vetResultMultipl[posicao] 
+
+                    }
+                    //alert('Soma total é ' + somaTotal) // caso a mesagem de NaN , inicie a variavel com somaTotal com 0
+
+                    resto = somaTotal % 11
+                    if(resto < 2)
+                    {
+                        digitoVer1 = 0
+
+                    } else {
+
+                        if(resto >= 2)
+                        {
+                            digitoVer1 = 11 - resto
+                        }
+                    }
+
+                 //   alert('O primeiro digito verificador é = ' + digitoVer1)
+
+                    // pegando o segundo digitoVerificador
+                    // primeiro vamos colocar o digito verificador achado na posição dele 
+                    // depois vamos iniciar nossa varMultiplicadora com 11 para fazer a multiplicação decrescente
+                    // Vamos zerar nossa variavel somaTotal para não trazer lixo de soma, 
+                    // faremos o mesmo com a variavel resto 
+
+                    /*Antes vamos criar uma flag para verificar se o digito verificador está correto, isso será usado para validar nosso CPF */
+                    if(vetCpf[9] == digitoVer1) // verificando o primeiro digito 
+                    flgDig1 = 1
+
+                    vetCpf[9] = digitoVer1
+                    varMultiplicadora = 11
+                    somaTotal = 0
+                    resto = 0
+
+                    for (posicao = 0; posicao <= 9; posicao ++)
+                    {
+                        vetResultMultipl[posicao] = vetCpf[posicao] * varMultiplicadora
+                        varMultiplicadora -- 
+                        if(varMultiplicadora == 1)
+                        {
+                            posicao = 9
+                        }
+                        somaTotal += vetResultMultipl[posicao]
+                    }
+                    //alert('O valor total é ' + somaTotal)
+                    resto = somaTotal % 11
+
+                    if(resto < 2 )
+                    {
+                        digitoVer2 = 0
+                    } else {
+                        if(resto >= 2)
+                        {
+                            digitoVer2 = 11 - resto
+                        }
+                    }
+                    // criando sessão do digito verificador
+                   sessionStorage.setItem('dig2', digitoVer2)
+                   sessionStorage.setItem('dig1', digitoVer1)
+               
+                   if (vetCpf[10] == digitoVer2) // verificando o segundo dígito
+                   flgDig2 = 1
+
+                   if ((flgDig1 == 1 ) && (flgDig2 == 1))
+                   {
+                        window.sessionStorage.setItem("msg", "VERDADEIRO") // criamos a sessão 
+                        // primeira parâmetro é a chave e o segundo é o conteúdo
+                        window.sessionStorage.setItem("cpf", varCpf)
+                     
+                   } else {
+                        
+                        window.sessionStorage.setItem("msg", "FALSO") // criamos a sessão 
+                        // primeira parâmetro é a chave e o segundo é o conteúdo
+                        window.sessionStorage.setItem("cpf", varCpf)
+                   }
+                }
+                // formatação para mostrar na tela o cpf e a mensagem
+               
+                
+                 
+                let sessaodig1, sessaodig2, sessaomsg, sessaocpf
+                sessaomsg = window.sessionStorage.getItem("msg")
+                sessaocpf = window.sessionStorage.getItem("cpf")
+                sessaodig1 = window.sessionStorage.getItem("dig1")
+                sessaodig2 = window.sessionStorage.getItem("dig2")
+
+                if ((sessaomsg != null) && (sessaomsg != null)){ // se a sessão nao for vazia
+                    if(sessaomsg == "VERDADEIRO"){
+                        window.document.getElementsByTagName('p')[0].style.color = "green"
+                        window.document.getElementsByTagName('p')[0].style.font = "italic bold 20px arial "
+                    } else {
+                        if(sessaomsg == "FALSO")
+                        {
+                        document.getElementsByTagName('p')[0].style.color = "rgb(153, 19, 9)"
+                        document.getElementsByTagName('p')[0].style.font = "italic bold 20px arial"
+                        document.getElementsByTagName('p')[1].innerHTML = "Para verdadeiro:<br>Dig. verificador - " + sessaodig1 + sessaodig2
+                        document.getElementsByTagName('p')[1].style.font = "italic 20px arial"
+                        document.getElementsByTagName('p')[1].style.color = "green"
+                        }
+                    }
+                        document.getElementsByTagName('p')[0].innerHTML = sessaocpf + " - " + sessaomsg
+                
+                    }  
+                       
+                       
+            </script>
+        </body>
+    </html>
