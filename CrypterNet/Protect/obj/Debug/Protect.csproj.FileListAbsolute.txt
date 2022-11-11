@@ -1,0 +1,10 @@
+C:\Users\deivid.nti\source\repos\Protect\Protect\bin\Debug\Protect.exe.config
+C:\Users\deivid.nti\source\repos\Protect\Protect\bin\Debug\Protect.exe
+C:\Users\deivid.nti\source\repos\Protect\Protect\bin\Debug\Protect.pdb
+C:\Users\deivid.nti\source\repos\Protect\Protect\obj\Debug\Protect.csproj.AssemblyReference.cache
+C:\Users\deivid.nti\source\repos\Protect\Protect\obj\Debug\Protect.Form1.resources
+C:\Users\deivid.nti\source\repos\Protect\Protect\obj\Debug\Protect.Properties.Resources.resources
+C:\Users\deivid.nti\source\repos\Protect\Protect\obj\Debug\Protect.csproj.GenerateResource.cache
+C:\Users\deivid.nti\source\repos\Protect\Protect\obj\Debug\Protect.csproj.CoreCompileInputs.cache
+C:\Users\deivid.nti\source\repos\Protect\Protect\obj\Debug\Protect.exe
+C:\Users\deivid.nti\source\repos\Protect\Protect\obj\Debug\Protect.pdb
