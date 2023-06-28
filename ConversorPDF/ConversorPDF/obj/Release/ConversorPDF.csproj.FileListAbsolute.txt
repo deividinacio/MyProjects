@@ -1,0 +1,13 @@
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\bin\Release\ConversorPDF.exe.config
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\bin\Release\ConversorPDF.exe
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\bin\Release\ConversorPDF.pdb
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\bin\Release\SautinSoft.PdfFocus.dll
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\bin\Release\SautinSoft.PdfFocus.xml
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.ConversorPDF.resources
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.Properties.Resources.resources
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.csproj.GenerateResource.cache
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.csproj.CoreCompileInputs.cache
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.csproj.CopyComplete
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.exe
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.pdb
+C:\Users\deivid.nti\source\repos\ConversorPDF\ConversorPDF\obj\Release\ConversorPDF.csproj.AssemblyReference.cache
